@@ -1,0 +1,25 @@
+Hello gabriana, your home is /home/gabriana, and your shell is /bin/bash
+/home/gabriana/Code/homework:
+00helloworld.py
+10hello.sh
+LICENSE
+lloutput.txt
+README.md
+
+/home/gabriana/Code/MCB185-2023:
+ASSESSMENT.md
+r2
+r2.save
+README.md
+REFERENCE.md
+unit0_tools_of_the_trade
+unit1_basic_unix
+unit2_beginning_python
+unit3_tuples_and_lists
+unit4_functions_and_files
+unit5_advanced_linux
+unit6_dictionaries_and_regex
+unit7_complex_data_structures
+unit8_final_projects
+unit9_unfinished_tales
+E.coli
