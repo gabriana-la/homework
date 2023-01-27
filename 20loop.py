@@ -6,7 +6,7 @@
 
 # Your code goes here
 
-for i in range(5, 50, 6):
+for i in range(5, 50, 7):
 	print(i)
 	
 """
