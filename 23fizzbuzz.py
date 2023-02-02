@@ -7,7 +7,9 @@
 
 # Note: this is a common interview question
 
-for i in range(1, 101):
+m = 1
+n = 100
+for i in range(m, n+1):
 	if i % 3 != 0 and i % 5 != 0:
 		print(i)
 	if i % 3 == 0:
