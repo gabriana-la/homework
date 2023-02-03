@@ -9,15 +9,18 @@
 # Note: set random.seed() if you want repeatable random numbers
 
 # generate random DNA sequence
+
 import random
-n = 30
-x = .60
-dna = ''
+random.seed(4)
+
+n = 30 # dna length
+x = .60 # AT%
+dna = '' # empty container
 
 for i in range(n):
 	r = random.random()
 	if r < x: dna += random.choice('AT')
-	else: dna += random.choice('CG')
+	else:     dna += random.choice('CG')
 
 # calculate AT fraction
 a = 0
@@ -25,10 +28,10 @@ c = 0
 g = 0
 t = 0
 for nt in dna:
-	if nt == 'A': a += 1
+	if   nt == 'A': a += 1
 	elif nt == 'C': c += 0
 	elif nt == 'G': g += 0
-	else: t += 1
+	else:           t += 1
 AT_frac = (a + t)/len(dna)
 
 # report length, AT fraction, sequence
