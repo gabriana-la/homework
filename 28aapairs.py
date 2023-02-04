@@ -7,6 +7,13 @@
 
 # Hint: if you get stuck for more than 10 minutes, get help
 
+aa = 'ACDEFGHIKLMNPQRSTVWY' # 20 single-letter codes for ammino acids
+n = 20 # number of amino acids
+
+for i in range(0, len(aa)):
+	for j in range(i + 1, len(aa)):
+		print(aa[i], aa[j])
+print(f'{n * (n - 1)/2:.0f}')
 
 """
 python3 28aapairs.py
