@@ -23,11 +23,8 @@ assert(math.isclose(sum(vals), 1.0))
 sum = 0
 for val in vals:
 	sum += (val * math.log2(val))
-H = 0 - (sum)
+h = 0 - (sum)
 print(f'{H:.3f}')
-
-#H = -sum(sys.argv * math.log(sys.argv))
-#print(H)
 
 """
 python3 31entropy.py 0.1 0.2 0.3 0.4
