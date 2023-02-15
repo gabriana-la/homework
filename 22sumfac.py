@@ -10,7 +10,7 @@ n = 5 # use this value for your computation
 
 rsum = 0
 fac = 1
-for i in range(1, n+1):
+for i in range(1, n+1): 
 	rsum += i
 	fac *= i
 print(n, rsum, fac)
