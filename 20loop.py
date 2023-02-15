@@ -19,4 +19,3 @@ python3 20loop.py
 40
 47
 """
-
