@@ -13,7 +13,7 @@ for i in range(len(dna)):
 	if   nt == 'A': revcomp = 'T' + revcomp
 	elif nt == 'C': revcomp = 'G' + revcomp
 	elif nt == 'G': revcomp = 'C' + revcomp
-	else: 	        revcomp = 'A' + revcomp
+	else:           revcomp = 'A' + revcomp
 print(revcomp)
 
 """
