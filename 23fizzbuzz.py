@@ -17,7 +17,7 @@ for i in range(m, n+1):
 	if i % 5 == 0:
 		print('Buzz')
 	if i % 3 == 0 and i % 5 == 0:
-		print('FizzBuzz')
+		print('Fizzbuzz')
 
 """
 python3 23fizzbuzz.py
