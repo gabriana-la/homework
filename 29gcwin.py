@@ -23,7 +23,7 @@ for i in range(len(seq) - w + 1):
 	print(f'{i} {seq[i: i + w]} {countgc/w:.4f}')
 
 """
-python3 29gcwin.py
+python3 26gcwin.py
 0 ACGACGCAGGA 0.6364
 1 CGACGCAGGAG 0.7273
 2 GACGCAGGAGG 0.7273
