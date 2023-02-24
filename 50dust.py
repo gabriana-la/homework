@@ -20,7 +20,7 @@ import argparse
 import mcb185
 import math
 
-parser = argparse.ArgumentParser(description='Brief description of program.')
+parser = argparse.ArgumentParser(description='Repeitive sequence masking.')
 parser.add_argument('file', type=str, metavar='<path>', help='fasta file')
 parser.add_argument('-w', required=False, type=int, default=11,
 	metavar='<int>', help='window size default [%(default)i]')
