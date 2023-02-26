@@ -20,14 +20,14 @@ import argparse
 import mcb185
 import math
 
-parser = argparse.ArgumentParser(description='Repeitive sequence masking.')
+parser = argparse.ArgumentParser(description='Repetitive sequence masking.')
 parser.add_argument('file', type=str, metavar='<path>', help='fasta file')
 parser.add_argument('-w', required=False, type=int, default=11,
 	metavar='<int>', help='window size default [%(default)i]')
 parser.add_argument('-t', required=False, type=float, default=1.4,
 	metavar='<float>', help='entropy threshold default [%(default).1f]')
 parser.add_argument('--lowercase', action='store_true',
-	help='N/lowercase masking switch')
+	help='N/lowercase masking')
 arg = parser.parse_args()
 
 def entropy(probs):
@@ -54,7 +54,8 @@ for name, seq in mcb185.read_fasta(sys.argv[1]):
 				if arg.lowercase: seq1[j] = seq[j].lower()
 				else: seq1[j] = 'N'
 	seq = ''.join(seq1)
-	print(seq)
+for i in range(0, len(seq), 60):	
+	print(seq[i: i + 60])
 
 """
 python3 50dust.py -w 11 -t 1.4 -s e.coli.fna  | head
