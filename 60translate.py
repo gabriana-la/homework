@@ -16,6 +16,8 @@
 # Note: the ambituity is translated as X in the protein
 # Note: the stop codon is represented by *
 
+import mcb185
+
 gcode = {
 	'AAA' : 'K',	'AAC' : 'N',	'AAG' : 'K',	'AAT' : 'N',
 	'ACA' : 'T',	'ACC' : 'T',	'ACG' : 'T',	'ACT' : 'T',
@@ -66,3 +68,6 @@ YELPDGQVITVGNERFRCPEAMFQPSFLGMESAGIHETSYNSIMKCDIDIRKDLYANTVL\
 SGGTTMYPGIADRMQKEITALAPSTMKIKIIAPPERKYSVWIGGSILASLSTFQQMWISK\
 QEYDESGPSIVHRKCF*\
 "
+
+seq = actin_cds.upper()
+print(mcb185.translate(seq, frame=0))
