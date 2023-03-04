@@ -8,6 +8,30 @@
 # Hint: use argparse
 # Hint: use mcb185.read_fasta()
 
+import argparse
+import mcb185
+
+parser = argparse.ArgumentParser(description='Kmer counts')
+parser.add_argument('file', type=str, metavar='<path>', help='fasta file')
+parser.add_argument('k', type=int, metavar='<int>', help='size of k')
+arg = parser.parse_args()
+
+def kmercount(file, k):
+	ntk = {}
+	total = 0
+	for name, seq in mcb185.read_fasta(arg.file):
+		for i in range(len(seq) - arg.k + 1):
+			kmer = seq[i: i + arg.k]
+			if kmer not in ntk:
+				ntk[kmer] = 0
+			ntk[kmer] += 1
+			total += 1
+	return ntk
+
+count = kmercount(arg.file, arg.k)
+
+for kmer in sorted(count):	
+	print(kmer, count[kmer])
 
 """
 python3 60kmers.py ~/DATA/E.coli/GCF_000005845.2_ASM584v2_genomic.fna.gz 2
