@@ -54,9 +54,9 @@ for name, seq in mcb185.read_fasta(sys.argv[1]):
 				if arg.lowercase: seq1[j] = seq[j].lower()
 				else: seq1[j] = 'N'
 	seq = ''.join(seq1)
-	
-for i in range(0, len(seq), 60):	
-	print(seq[i: i + 60])
+	print(f'>{name}')
+	for i in range(0, len(seq), 60):
+		print(seq[i: i + 60])
 
 """
 python3 50dust.py -w 11 -t 1.4 -s e.coli.fna  | head
