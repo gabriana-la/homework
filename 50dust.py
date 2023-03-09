@@ -1,3 +1,4 @@
+#!/usr/bin/env/ python3
 # 50dust.py
 
 # Write a better version of your 42dust.py program
