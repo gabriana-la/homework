@@ -15,6 +15,34 @@
 
 # Note: your genes should be similar to those in the real genome
 
+import argparse
+import mcb185
+import re
+
+parser = argparse.ArgumentParser(description='ORF finder')
+parser.add_argument('file', type=str, metavar='<path>', help='fasta file')
+parser.add_argument('-n', required=False, type=int, default=300,
+	metavar='<int>', help='default minimum ORF size [%(default)i]')
+arg = parser.parse_args()
+
+for name, seq in mcb185.read_fasta(arg.file):
+	for f in range(3):
+		aaseq = mcb185.translate(seq, frame=f)
+		orf = 'M\w+\*'
+		for match in re.finditer(orf, aaseq):
+			protein = match.group()
+			if len(protein)*3 >= arg.n:
+				print(name[0:11], 3*match.start()+1+f, 3*match.end()+f, '+', protein[0:10])
+
+for name, seq in mcb185.read_fasta(arg.file):
+	antidna = mcb185.anti(seq)
+	for f in range(3):
+		antiaaseq = mcb185.translate(antidna, frame=f)
+		orf = 'M\w+\*'
+		for match in re.finditer(orf, antiaaseq):
+			protein = match.group()
+			if len(protein)*3 >= arg.n:
+				print(name[0:11], len(seq)-(3*match.end()-1+f), len(seq)-(3*match.start()+f), '-', protein[0:10])
 
 """
 python3 62orfs.py ~/DATA/E.coli/GCF_000005845.2_ASM584v2_genomic.fna.gz
