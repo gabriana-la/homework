@@ -31,6 +31,7 @@ def read_fasta(filename):
 
 # def other functions...
 
+# translation function
 gcode = {
 	'AAA' : 'K',	'AAC' : 'N',	'AAG' : 'K',	'AAT' : 'N',
 	'ACA' : 'T',	'ACC' : 'T',	'ACG' : 'T',	'ACT' : 'T',
@@ -58,3 +59,14 @@ def translate(seq, frame=0):
 		if codon not in gcode: peptide += 'X'
 		else: peptide += gcode[codon]
 	return peptide
+
+# reverse compliment function
+def anti(dna):
+	revcomp = ''
+	for nt in dna[::-1]:
+		if   nt == 'A': revcomp += 'T'
+		elif nt == 'C': revcomp += 'G'
+		elif nt == 'G': revcomp += 'C'
+		elif nt == 'T': revcomp += 'A'
+		else: revcomp += 'N'
+	return(revcomp)
