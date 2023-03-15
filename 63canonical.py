@@ -13,9 +13,46 @@
 # Hint: you can read a file twice, first to get the DNA, then the CDS
 # Hint: check your CDS by examining the source protein
 
+import sys
+import gzip
+import mcb185
+import re
+
+filename = sys.argv[1]
+
+# grabbing the sequence
+seq = ''
+
+with gzip.open(filename, 'rt') as fp:
+	for line in fp:
+		if line.startswith('ORIGIN'):
+			break
+	for line in fp.readlines():
+		f = line.split()
+		seq += ''.join(f[1:])
+seq = seq.upper()
+
+# finding the coordinates
+startcs = {}
+with gzip.open(filename, 'rt') as fp:
+	for line in fp.readlines():
+		if line.startswith('     CDS'):
+			coordinates = re.search('(\d+)\.\.(\d+)', line)
+			beg = int(coordinates.group(1))
+			end = int(coordinates.group(2))
+			if 'complement' in line:
+				startc = mcb185.anti(seq[end - 3: end])
+			else:
+				startc = seq[beg - 1: beg + 2]
+			if startc not in startcs:
+				startcs[startc] = 0
+			startcs[startc] += 1
+
+for startc in startcs:
+	print(startc, startcs[startc])
 
 """
-python3 63canonical.py ~/DATA/E.coli/GCF_000005845.2_ASM584v2_genomic.gbff.gz
+python3 63canonical.py ~/DATAq/E.coli/GCF_000005845.2_ASM584v2_genomic.gbff.gz
 ATG 3883
 GTG 338
 TTG 80
