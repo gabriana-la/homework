@@ -18,3 +18,4 @@ B		matches the letter B
 \(		matches a left parenthese
 *		matches any character to the immediate left 0 or more times
 M\w+\*  matches any amino acid sequence that starts with M and ends with *
+\d+		matches any number of numbers
