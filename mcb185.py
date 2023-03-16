@@ -52,6 +52,7 @@ gcode = {
 }
 
 def translate(seq, frame=0):
+	seq = seq.upper()
 	peptide = ''
 	assert(frame >= 0 and frame <= 2)
 	for i in range(frame, len(seq), 3):
@@ -62,6 +63,7 @@ def translate(seq, frame=0):
 
 # reverse compliment function
 def anti(dna):
+	dna = dna.upper()
 	revcomp = ''
 	for nt in dna[::-1]:
 		if   nt == 'A': revcomp += 'T'
