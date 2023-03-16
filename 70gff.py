@@ -17,7 +17,6 @@ with gzip.open(filename, 'rt') as fp:
 	for line in fp:
 		if line.startswith('#'): continue
 		for match in re.finditer('RefSeq\s+gene', line):
-			info = {}
 			name = re.search('Name=(\w+)', line)
 			gene = str(name.group(1))
 			
@@ -28,6 +27,7 @@ with gzip.open(filename, 'rt') as fp:
 			sense = re.search('\.\s+(.)\s+\.', line)
 			strand = sense.group(1)
 			
+			info = {}
 			info['gene'] = gene
 			info['beg'] = beg
 			info['end'] = end
