@@ -10,6 +10,47 @@
 
 # Note: gene names are stored differently here than the last file
 
+import sys
+import gzip
+import re
+import json
+
+filename = sys.argv[1]
+
+chromosomes = {}
+genome = {}
+
+with gzip.open(filename, 'rt') as fp:
+	for line in fp:
+		for match in re.finditer('\s+gene\s+', line):
+			f = line.split()
+			chromosome = f[0]
+			if chromosome not in chromosomes: chromosomes[chromosome] = 0 
+			chromosomes[chromosome] +=1
+			
+			name = re.search('sequence_name=(\w+\.\w+)', line)
+			gene = str(name.group(1))
+			
+			coordinates = re.search('\s+(\d+)\s+(\d+)\s+', line)
+			beg = int(coordinates.group(1))
+			end = int(coordinates.group(2))
+			
+			sense = re.search('\.\s+(.)\s+\.', line)
+			strand = sense.group(1)
+			
+			info = {}
+			info['gene'] = gene
+			info['beg'] = beg
+			info['end'] = end
+			info['strand'] = strand
+			
+			if chromosome not in genome: genome[chromosome] = []
+			else: genome[chromosome].append(info)
+			
+for chromosome in chromosomes:
+	print(chromosome, chromosomes[chromosome])			
+
+print(json.dumps(genome, indent=4))
 
 """
 python3 71gff.py elegans
